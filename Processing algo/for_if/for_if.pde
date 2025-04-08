@@ -1,4 +1,5 @@
 int position = 0;
+
 void setup(){
   for (int i = 0; i < 7; i += 0){
     if ((i==1) || (i==3)){
