@@ -63,7 +63,6 @@ void jump(){
 }
 
 void setup(){
-  size(1000,1000);
   deplacement = 0;
   size = random(0, 50);
   convertsize = int(size);
