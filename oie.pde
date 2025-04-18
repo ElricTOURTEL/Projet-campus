@@ -23,7 +23,13 @@ void setup () {
 }
 void draw() {
 }
-
+void legende(){
+  for(int i=0; i<numberPlayers;i++){
+    indexPlayer = i;
+    switchcolor();
+    rect(55, 115+(i*30), 30, 30);
+  }
+}
 void initBoard() {
   for (int i=0; i<64; i++) {
     fill(255);
@@ -37,8 +43,11 @@ void initBoard() {
     textAlign(CENTER, CENTER);
     text(i, 28+(i*15), 60);
   }
-  fill(40, 150, 150);
-  rect(55, 115, 30, 30);
+  legende();
+/*  rect(55, 115, 30, 30);
+  rect(55, 235, 30, 30);
+  rect(275, 115, 30, 30);
+  rect(275, 235, 30, 30); */
 }
 
 void diceThrow() {
@@ -50,7 +59,6 @@ void diceThrow() {
 
 void showPlayer(int currentPos) { // le rectangle avec la position du joueur actuellement
   switchcolor();
-  int compare = numberPlayers;
   rect(20+(currentPos*15), 40, 15, 40);
   textAlign(CENTER, CENTER);
   fill(0);
@@ -204,11 +212,13 @@ void skull() {
   }
 }
 void sameposition() {
-  for (int i=0; i<numberPlayers; i++) {
-    if (i!=indexPlayer && positionPlayer[i] == positionPlayer[indexPlayer]) {
-      positionPlayer[indexPlayer] = previousPosition[i];
-      println("Le joueur: "+ (indexPlayer+1) + " retour à la position précédente du joueur " + (i+1)+" cad la case" + previousPosition[i]);
-      break;
+  if (positionPlayer[indexPlayer]!=3 && positionPlayer[indexPlayer]!=19 && positionPlayer[indexPlayer]!=52) {
+    for (int i=0; i<numberPlayers; i++) {
+      if (i!=indexPlayer && positionPlayer[i] == positionPlayer[indexPlayer] && previousPosition[indexPlayer]!=42) {
+        positionPlayer[i] = tempPosition[indexPlayer];
+        println("Le joueur: "+ (i+1) + " retour à la position précédente du joueur " + (indexPlayer+1)+" cad la case" + tempPosition[indexPlayer]);
+        break;
+      }
     }
   }
 }
